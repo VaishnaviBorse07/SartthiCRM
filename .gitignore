@@ -1,5 +1,0 @@
-node_modules/
-.env
-database/sartthi.db
-uploads/*
-!uploads/.gitkeep
