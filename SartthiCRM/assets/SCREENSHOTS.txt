@@ -1,0 +1,11 @@
+Add your real SartthiCRM dashboard PNG screenshots to this folder:
+
+  hero_preview.png   — Main dashboard (AI + pipeline + KPIs)
+  it_crm.png         — IT Sales & Support CRM
+  ca_crm.png         — CA Practice Manager
+  retail_crm.png     — Retail & Distribution
+
+The site uses <picture> elements: PNG is shown when present; SVG fallbacks are used until you add them.
+
+Optional module screenshots (future):
+  workflow.png, attendance.png, ai_insights.png, pipeline.png

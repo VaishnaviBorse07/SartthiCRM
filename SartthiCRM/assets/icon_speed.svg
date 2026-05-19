@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="Faster Close Speed">
+  <defs>
+    <linearGradient id="g_speed" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#e0f2fe"/>
+      <stop offset="100%" stop-color="#7dd3fc"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#g_speed)"/>
+  <!-- Speedometer arc (semicircle) -->
+  <path d="M18 64 A33 33 0 0 1 82 64" fill="none" stroke="white" stroke-width="6" stroke-linecap="round"/>
+  <!-- Tick marks on arc -->
+  <line x1="18" y1="64" x2="21" y2="57" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="50" y1="31" x2="50" y2="38" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="82" y1="64" x2="79" y2="57" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="30" y1="38" x2="33" y2="44" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <line x1="70" y1="38" x2="67" y2="44" stroke="white" stroke-width="2" stroke-linecap="round"/>
+  <!-- Needle pointing to max (top-right) -->
+  <line x1="50" y1="64" x2="68" y2="40" stroke="white" stroke-width="4" stroke-linecap="round"/>
+  <circle cx="50" cy="64" r="5" fill="white"/>
+  <!-- Lightning bolt in center -->
+  <path d="M46,44 L40,56 L48,56 L44,70 L56,52 L48,52 L52,44 Z" fill="white" opacity="0.85"/>
+</svg>

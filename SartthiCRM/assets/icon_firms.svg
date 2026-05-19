@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="CA Firms">
+  <defs>
+    <linearGradient id="g_firms" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#a7f3d0"/>
+      <stop offset="100%" stop-color="#34d399"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#g_firms)"/>
+  <!-- Ground line -->
+  <line x1="18" y1="76" x2="82" y2="76" stroke="white" stroke-width="3" stroke-linecap="round"/>
+  <!-- Main building (center) -->
+  <rect x="34" y="30" width="32" height="46" rx="1" fill="none" stroke="white" stroke-width="3"/>
+  <!-- Main building top cap -->
+  <rect x="30" y="26" width="40" height="8" rx="1" fill="white"/>
+  <!-- Main building windows col 1 -->
+  <rect x="38" y="36" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <rect x="38" y="45" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <rect x="38" y="54" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <rect x="38" y="63" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <!-- Main building windows col 2 -->
+  <rect x="48" y="36" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <rect x="48" y="45" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <rect x="48" y="54" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <rect x="48" y="63" width="6" height="5" rx="1" fill="white" opacity="0.5"/>
+  <!-- Right smaller building -->
+  <rect x="68" y="46" width="14" height="30" rx="1" fill="white" opacity="0.8"/>
+  <rect x="71" y="50" width="4" height="4" rx="0.5" fill="url(#g_firms)"/>
+  <rect x="71" y="57" width="4" height="4" rx="0.5" fill="url(#g_firms)"/>
+  <rect x="71" y="64" width="4" height="4" rx="0.5" fill="url(#g_firms)"/>
+  <!-- Left smaller building -->
+  <rect x="18" y="48" width="14" height="28" rx="1" fill="white" opacity="0.8"/>
+  <rect x="21" y="52" width="4" height="4" rx="0.5" fill="url(#g_firms)"/>
+  <rect x="21" y="59" width="4" height="4" rx="0.5" fill="url(#g_firms)"/>
+  <rect x="21" y="66" width="4" height="4" rx="0.5" fill="url(#g_firms)"/>
+  <!-- Door -->
+  <rect x="44" y="66" width="12" height="10" rx="1" fill="white"/>
+</svg>

@@ -1,0 +1,511 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CA Practice Manager CRM – SartthiCRM</title>
+<meta name="description" content="Purpose-built CRM for CA firms — GST tracker, ITR management, compliance calendar, and client communication.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="home.css">
+<style>
+.prod-hero { min-height:60vh; padding:130px 5vw 80px; display:grid;
+  grid-template-columns:1fr 1fr; gap:60px; align-items:center;
+  background:linear-gradient(135deg,#F0FDF4 0%,#ECFDF5 50%,white 100%);
+  position:relative; overflow:hidden; }
+.prod-hero::before { content:''; position:absolute; top:-200px; right:-200px;
+  width:600px; height:600px; border-radius:50%;
+  background:radial-gradient(circle,rgba(16,185,129,.1) 0%,transparent 70%); pointer-events:none; }
+.ph-badge { display:inline-flex; align-items:center; gap:8px; background:white;
+  border:1px solid var(--green-l); padding:6px 16px; border-radius:100px;
+  font-size:.75rem; font-weight:700; color:#065F46; margin-bottom:24px; box-shadow:var(--sh-sm); }
+.ph-h1 { font-family:var(--fh); font-size:clamp(2.4rem,5vw,4.2rem);
+  font-weight:400; line-height:1.08; letter-spacing:-.025em; color:var(--navy); margin-bottom:20px; }
+.ph-actions { display:flex; gap:12px; flex-wrap:wrap; margin-top:32px; }
+
+/* CALENDAR MOCKUP */
+.cal-mock { background:white; border-radius:18px; border:1px solid var(--g200);
+  box-shadow:var(--sh-xl); overflow:hidden;
+  animation:float-combo 6s ease-in-out infinite; }
+.cal-bar { height:38px; background:var(--g50); border-bottom:1px solid var(--g200);
+  display:flex; align-items:center; gap:12px; padding:0 14px; }
+.cal-bar-dots { display:flex; gap:5px; }
+.cbd { width:10px; height:10px; border-radius:50%; }
+.cal-body { padding:16px; }
+.cal-title { font-size:.82rem; font-weight:700; color:var(--navy); margin-bottom:12px;
+  display:flex; align-items:center; justify-content:space-between; }
+.cal-grid-hdr { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; margin-bottom:6px; }
+.chdr { font-size:.58rem; font-weight:700; text-transform:uppercase; color:var(--g400); text-align:center; }
+.cal-grid { display:grid; grid-template-columns:repeat(7,1fr); gap:4px; }
+.cday { aspect-ratio:1; display:flex; align-items:center; justify-content:center;
+  font-size:.64rem; border-radius:5px; cursor:pointer; transition:all .2s; }
+.cday:hover { background:var(--sky-l); }
+.cday.today { background:var(--sky); color:white; font-weight:700; }
+.cday.deadline { background:var(--red-l); color:var(--red); font-weight:700; position:relative; }
+.cday.deadline::after { content:''; position:absolute; top:2px; right:2px;
+  width:4px; height:4px; border-radius:50%; background:var(--red); }
+.cday.done { background:var(--green-l); color:var(--green); font-weight:700; }
+.compliance-items { display:flex; flex-direction:column; gap:6px; margin-top:12px; }
+.ci { display:flex; align-items:center; gap:8px; padding:7px 10px;
+  border-radius:8px; font-size:.68rem; border:1px solid var(--g200); }
+.ci-dot { width:7px; height:7px; border-radius:50%; flex-shrink:0; }
+.ci-text { flex:1; font-weight:500; color:var(--navy); }
+.ci-date { color:var(--g400); font-weight:600; }
+
+/* FEATURES */
+.feat-2col { display:grid; grid-template-columns:1fr 1fr; gap:16px; margin-top:48px; }
+.feat-row { display:flex; align-items:flex-start; gap:12px; padding:16px;
+  background:white; border-radius:14px; border:1.5px solid var(--g200); transition:all .3s ease; }
+.feat-row:hover { border-color:var(--green); transform:translateX(4px); box-shadow:var(--sh-sm); }
+.fr-ico { width:38px; height:38px; border-radius:11px; display:flex;
+  align-items:center; justify-content:center; font-size:1.1rem; flex-shrink:0; }
+.fr-name { font-size:.88rem; font-weight:700; color:var(--navy); margin-bottom:3px; }
+.fr-desc { font-size:.76rem; color:var(--g500); line-height:1.5; }
+
+.uc-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+.uc-card { background:white; border-radius:18px; border:1.5px solid var(--g200);
+  padding:26px; transition:all .35s ease; }
+.uc-card:hover { border-color:var(--green); transform:translateY(-5px); box-shadow:var(--sh-md); }
+.uc-num { font-family:var(--fh); font-size:2.4rem; color:var(--green-l); line-height:1; margin-bottom:12px; }
+.uc-title { font-size:.95rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.uc-desc { font-size:.8rem; color:var(--g500); line-height:1.6; }
+
+.faq-list { max-width:720px; margin:48px auto 0; display:flex; flex-direction:column; gap:10px; }
+.faq-item { background:white; border-radius:16px; border:1.5px solid var(--g200); overflow:hidden; }
+.faq-item.open { border-color:var(--green); box-shadow:0 4px 20px rgba(16,185,129,.1); }
+.faq-q { display:flex; align-items:center; justify-content:space-between;
+  padding:17px 22px; cursor:pointer; font-size:.9rem; font-weight:600; color:var(--navy); }
+.faq-ico { width:24px; height:24px; border-radius:50%; background:var(--g100);
+  display:flex; align-items:center; justify-content:center; font-size:.7rem; color:var(--g500); transition:all .35s; }
+.faq-item.open .faq-ico { background:var(--green); color:white; transform:rotate(45deg); }
+.faq-a { max-height:0; overflow:hidden; transition:max-height .4s ease; }
+.faq-a-inner { padding:0 22px 18px; font-size:.84rem; color:var(--g500); line-height:1.7; }
+.faq-item.open .faq-a { max-height:180px; }
+
+@media(max-width:900px) { .prod-hero{grid-template-columns:1fr;} .feat-2col{grid-template-columns:1fr;} .uc-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:600px) { .uc-grid{grid-template-columns:1fr;} }
+</style>
+</head>
+<body>
+<script src="nav.js" defer></script>
+<main>
+
+<section class="prod-hero-premium ca">
+  <div data-anim="fade-left">
+    <div class="ph-badge"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v17"/><path d="M5 20h14"/><path d="M22 8h-4l-3-5H9L6 8H2"/><path d="M2 8l2 6h16l2-6"/></svg> CA Practice Manager CRM</div>
+    <h1 class="ph-h1">Never miss a<br><span style="color:var(--green);font-style:italic">compliance deadline.</span></h1>
+    <p class="lead">The only CRM purpose-built for Indian CA firms. GST filing tracker, ITR management, compliance calendar, and automated client reminders — all in one place.</p>
+    <div class="ph-actions">
+      <a class="btn-primary" href="auth.html#register" style="background:var(--green);box-shadow:0 4px 20px rgba(16,185,129,.4)">Start Free Trial →</a>
+      <a class="btn-outline" href="contact.html">Book a Demo</a>
+    </div>
+    <div style="display:flex;gap:20px;margin-top:28px;flex-wrap:wrap">
+      <div style="font-size:.78rem;color:var(--g500);display:flex;align-items:center;gap:5px"><span style="color:var(--green);font-weight:700">✓</span> GST Tracker</div>
+      <div style="font-size:.78rem;color:var(--g500);display:flex;align-items:center;gap:5px"><span style="color:var(--green);font-weight:700">✓</span> ITR Filing</div>
+      <div style="font-size:.78rem;color:var(--g500);display:flex;align-items:center;gap:5px"><span style="color:var(--green);font-weight:700">✓</span> WhatsApp Reminders</div>
+    </div>
+  </div>
+  <div data-anim="fade-right">
+    <div style="max-width:540px;margin:0 auto;border-radius:18px;overflow:hidden;box-shadow:var(--sh-xl);border:1px solid var(--g200);animation:float-combo 6s ease-in-out infinite;">
+      <picture>
+        <source srcset="assets/ca_crm.png" type="image/png">
+        <img src="assets/ca_crm.svg" alt="CA Practice Manager Dashboard" style="width:100%;height:auto;display:block">
+      </picture>
+    </div>
+  </div>
+</section>
+
+<!-- ★ STATS BAR ★ -->
+<div class="prod-stats" data-anim="fade-up">
+  <div class="prod-stats-inner">
+    <div class="pstat">
+      <picture><source srcset="assets/icon_firms.png" type="image/png"><img class="pstat-icon" src="assets/icon_firms.svg" alt="CA Firms"></picture>
+      <div class="pstat-num"><span class="count" data-t="500">0</span><span class="suf">+</span></div>
+      <div class="pstat-lbl">CA Firms &amp; Tax Consultants</div>
+    </div>
+    <div class="pstat">
+      <picture><source srcset="assets/icon_filings.png" type="image/png"><img class="pstat-icon" src="assets/icon_filings.svg" alt="Filings"></picture>
+      <div class="pstat-num"><span class="count" data-t="3">0</span><span class="suf">L+</span></div>
+      <div class="pstat-lbl">Compliance Filings Tracked</div>
+    </div>
+    <div class="pstat">
+      <picture><source srcset="assets/icon_clock.png" type="image/png"><img class="pstat-icon" src="assets/icon_clock.svg" alt="On-Time"></picture>
+      <div class="pstat-num"><span class="count" data-t="98">0</span><span class="suf">%</span></div>
+      <div class="pstat-lbl">On-Time Filing Rate Achieved</div>
+    </div>
+    <div class="pstat">
+      <picture><source srcset="assets/icon_rating.png" type="image/png"><img class="pstat-icon" src="assets/icon_rating.svg" alt="Rating"></picture>
+      <div class="pstat-num">4.9<span class="suf">★</span></div>
+      <div class="pstat-lbl">Average Rating from CA Firms</div>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES -->
+<section class="sec" style="background:var(--g50)">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up" style="margin-bottom:60px">
+      <div class="tag">Features</div>
+      <h2 class="h2">Everything a CA firm <span style="color:var(--green);font-style:italic">actually needs.</span></h2>
+    </div>
+
+    <!-- Group 1: Dashboard & Client Management -->
+    <div style="margin:24px 0 16px" data-anim="fade-up">
+      <div class="tag-bare" style="color:var(--green)">🔹 Dashboard & Client Management</div>
+    </div>
+    <div class="features-master-grid" data-stagger style="margin-bottom:48px">
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:#F0FDF4;color:var(--green)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></div>
+        <div class="fc-name">Revenue Overview</div>
+        <div class="fc-desc">Track outstanding fees and realized revenue across all your retainer and one-time clients.</div>
+        <ul class="fc-list"><li>Track outstanding fees</li><li>Realized revenue reporting</li></ul>
+      </div>
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:#FFF0F3;color:#BE123C"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg></div>
+        <div class="feat-badge-unique">🌟 Only on Sartthi</div>
+        <div class="fc-name">Compliance Alerts</div>
+        <div class="fc-desc">Actionable alerts for upcoming due dates for GST, TDS, and ITR filings.</div>
+        <ul class="fc-list"><li>Actionable alerts for upcoming due dates</li><li>Auto-generated task lists</li></ul>
+      </div>
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:#EEF2FF;color:var(--sky-dd)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+        <div class="feat-badge-unique">🌟 Only on Sartthi</div>
+        <div class="fc-name">Client Portal</div>
+        <div class="fc-desc">Secure portal with OTP login for clients to upload documents and view filing status.</div>
+        <ul class="fc-list"><li>Store GSTIN, PAN, Aadhaar</li><li>OTP login for document uploads</li><li>Audit log of all services rendered</li></ul>
+      </div>
+    </div>
+
+    <!-- Group 2: Compliance & Task Management -->
+    <div style="margin:24px 0 16px" data-anim="fade-up">
+      <div class="tag-bare" style="color:var(--green)">🔹 Compliance & Task Management</div>
+    </div>
+    <div class="features-master-grid" data-stagger style="margin-bottom:48px">
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:var(--yellow-l);color:#A16207"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg></div>
+        <div class="feat-badge-unique">🌟 Only on Sartthi</div>
+        <div class="fc-name">Statutory Tracking</div>
+        <div class="fc-desc">Centralized tracking for GST, ITR, TDS, ROC, and MCA compliance for every client.</div>
+        <ul class="fc-list"><li>GST, ITR, TDS, ROC, and MCA tracking</li><li>PF/ESI Tracker</li></ul>
+      </div>
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:#DCFCE7;color:var(--green)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="feat-badge-unique">🌟 Only on Sartthi</div>
+        <div class="fc-name">DSC Expiry Alerts</div>
+        <div class="fc-desc">Never miss a Digital Signature renewal with automated tracking and alerts.</div>
+        <ul class="fc-list"><li>Never miss a Digital Signature renewal</li><li>Auto-generate monthly GST tasks</li></ul>
+      </div>
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:#F5F3FF;color:#6D28D9"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><rect x="8" y="2" width="8" height="4" rx="1" ry="1"/></svg></div>
+        <div class="fc-name">Task Assignment</div>
+        <div class="fc-desc">Allocate specific filings and tasks to articled assistants with standardized SOPs.</div>
+        <ul class="fc-list"><li>Allocate filings to articled assistants</li><li>Standardized SOPs for specific job types</li></ul>
+      </div>
+    </div>
+
+    <!-- Group 3: Leads & Billing -->
+    <div style="margin:24px 0 16px" data-anim="fade-up">
+      <div class="tag-bare" style="color:var(--green)">🔹 Leads, Billing & Communication</div>
+    </div>
+    <div class="features-master-grid" data-stagger style="margin-bottom:48px">
+      <div class="feat-card" data-cat="comm">
+        <div class="fc-ico" style="background:#EEF2FF;color:var(--sky-dd)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg></div>
+        <div class="fc-name">Call Center & Leads</div>
+        <div class="fc-desc">Track inquiries to signed retainer agreements with built-in VoIP calling integration.</div>
+        <ul class="fc-list"><li>Track inquiries to signed agreements</li><li>VoIP Integration (Twilio, Knowlarity)</li><li>Track follow-ups for document collection</li></ul>
+      </div>
+      <div class="feat-card" data-cat="core">
+        <div class="fc-ico" style="background:var(--sky-l);color:var(--navy)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+        <div class="fc-name">Time & Billing</div>
+        <div class="fc-desc">Track billable hours, staff attendance, and generate GST-compliant invoices automatically.</div>
+        <ul class="fc-list"><li>Generate and email GST invoices instantly</li><li>Manage monthly professional fees</li><li>Track hours spent per task</li><li>Staff attendance & leave</li></ul>
+      </div>
+      <div class="feat-card" data-cat="comm">
+        <div class="fc-ico" style="background:#DCFCE7;color:var(--green)"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div>
+        <div class="feat-badge-unique">🌟 Only on Sartthi</div>
+        <div class="fc-name">WhatsApp & Documents</div>
+        <div class="fc-desc">Auto-send compliance reminders via WhatsApp and store ITRs directly in client profiles.</div>
+        <ul class="fc-list"><li>Auto-send compliance & payment reminders</li><li>Client-Linked Storage for ITRs</li><li>Inward/Outward Document Register</li></ul>
+      </div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    </div>
+</section>
+
+<!-- ★ HOW IT WORKS ★ -->
+<section class="hiw-section" data-anim="fade-up">
+  <div class="container">
+    <div class="sec-center">
+      <div class="tag">How It Works</div>
+      <h2 class="h2">Up and running in <span style="color:var(--green);font-style:italic">3 simple steps.</span></h2>
+      <p class="lead-sm" style="max-width:520px;margin:14px auto 0">No complicated setup. No steep learning curve. CA firms are live within a day.</p>
+    </div>
+    <div class="hiw-steps">
+      <div class="hiw-step" data-anim="fade-up">
+        <div class="hiw-step-num" style="background:#F0FDF4;color:var(--green);border-color:var(--green)">01</div>
+        <div class="hiw-step-ico" style="background:#F0FDF4">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <div class="hiw-step-title">Import Your Client List</div>
+        <div class="hiw-step-desc">Upload existing client data via Excel or add manually. Store GSTIN, PAN, and compliance profiles instantly.</div>
+      </div>
+      <div class="hiw-arrow">→</div>
+      <div class="hiw-step" data-anim="fade-up">
+        <div class="hiw-step-num" style="background:#F0FDF4;color:var(--green);border-color:var(--green)">02</div>
+        <div class="hiw-step-ico" style="background:#FEF9C3">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="#A16207" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg>
+        </div>
+        <div class="hiw-step-title">Assign Tasks & Deadlines</div>
+        <div class="hiw-step-desc">The compliance calendar auto-populates GST, TDS, and ITR due dates. Assign tasks to staff with a single click.</div>
+      </div>
+      <div class="hiw-arrow">→</div>
+      <div class="hiw-step" data-anim="fade-up">
+        <div class="hiw-step-num" style="background:#F0FDF4;color:var(--green);border-color:var(--green)">03</div>
+        <div class="hiw-step-ico" style="background:#DCFCE7">
+          <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="var(--green)" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+        </div>
+        <div class="hiw-step-title">Auto-Reminders Go Out</div>
+        <div class="hiw-step-desc">Clients get WhatsApp & email reminders before every deadline. Zero manual follow-ups needed.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ★ TESTIMONIALS ★ -->
+<section class="testi-section" style="background:var(--g50)" data-anim="fade-up">
+  <div class="container">
+    <div class="sec-center">
+      <div class="tag">Testimonials</div>
+      <h2 class="h2">Loved by CA firms <span style="color:var(--green);font-style:italic">across India.</span></h2>
+    </div>
+    <div class="testi-grid" data-stagger>
+      <div class="testi-card">
+        <div class="testi-quote-ico">&ldquo;</div>
+        <div class="testi-stars"><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span></div>
+        <p class="testi-text">"Before SartthiCRM, we used Excel for 200+ clients. We missed 3 GST filings in a year. Since switching, zero missed deadlines in 14 months. The WhatsApp reminders alone saved us ₹2L in penalties."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,var(--green),#059669)">RK</div>
+          <div><div class="testi-name">CA Rajesh Kulkarni</div><div class="testi-role">Partner, R.K. & Associates — Pune</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-ico">&ldquo;</div>
+        <div class="testi-stars"><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span></div>
+        <p class="testi-text">"The DSC expiry tracker is a lifesaver. The client portal with OTP login means clients can upload documents directly instead of sending files on WhatsApp. My team saves 2 hours every day."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#0EA5E9,#075985)">SP</div>
+          <div><div class="testi-name">CA Sneha Patil</div><div class="testi-role">Founder, Patil & Co. Tax Consultants — Mumbai</div></div>
+        </div>
+      </div>
+      <div class="testi-card">
+        <div class="testi-quote-ico">&ldquo;</div>
+        <div class="testi-stars"><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span><span class="tstar">★</span></div>
+        <p class="testi-text">"We manage 400+ GST clients with 8 staff. Task assignment and workload visibility has transformed our practice. Billing and GST invoices are generated in seconds. Best ₹600/user investment we've made."</p>
+        <div class="testi-author">
+          <div class="testi-avatar" style="background:linear-gradient(135deg,#8B5CF6,#6D28D9)">AM</div>
+          <div><div class="testi-name">CA Amit Mehta</div><div class="testi-role">Managing Partner, Mehta & Sons CA Firm — Ahmedabad</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ★ INTEGRATION STRIP ★ -->
+<div class="int-strip">
+  <div class="int-strip-label">Connects with the tools CA firms already use</div>
+  <div class="int-track-wrap">
+    <div class="int-track">
+      <span class="int-logo">WhatsApp Business</span>
+      <span class="int-logo">Tally ERP</span>
+      <span class="int-logo">Interakt</span>
+      <span class="int-logo">Brevo (Sendinblue)</span>
+      <span class="int-logo">Cloudflare R2</span>
+      <span class="int-logo">Twilio VoIP</span>
+      <span class="int-logo">GST Portal</span>
+      <span class="int-logo">Income Tax Portal</span>
+      <span class="int-logo">Knowlarity</span>
+      <span class="int-logo">WhatsApp Business</span>
+      <span class="int-logo">Tally ERP</span>
+      <span class="int-logo">Interakt</span>
+      <span class="int-logo">Brevo (Sendinblue)</span>
+      <span class="int-logo">Cloudflare R2</span>
+      <span class="int-logo">Twilio VoIP</span>
+      <span class="int-logo">GST Portal</span>
+      <span class="int-logo">Income Tax Portal</span>
+      <span class="int-logo">Knowlarity</span>
+    </div>
+  </div>
+</div>
+
+<!-- FEATURES SECTION -->
+<section class="sec" style="background:var(--g50)">
+  <div class="container">
+    <div class="sec-center" style="margin-bottom:48px">
+      <div class="tag">Pricing</div>
+    </div>
+    <!-- PRICING SECTION -->
+    <div class="price-wrap" id="pricing" data-anim="fade-up">
+
+      <div class="cmp-container">
+        <div class="sec-center" style="margin-bottom:48px;">
+          <div class="tag">PLANS COMPARISON &mdash; 1 of 2</div>
+          <h2 class="h2" style="color:white;font-size:2.4rem;">Essential vs Premium &mdash; <span style="color:var(--green);font-style:italic">Side by Side</span></h2>
+        </div>
+
+        <div class="cmp-headers">
+          <div class="cmp-head"></div>
+          <div class="cmp-head cmp-head-box cmp-head-ess">
+            <div class="cmp-tier-name">Essential</div>
+            <div class="cmp-price-row">
+              <div style="font-size:1.4rem;color:white;font-weight:700;margin-bottom:4px">₹600</div>
+              <div>/ user / month</div>
+            </div>
+          </div>
+          <div class="cmp-head cmp-head-box cmp-head-prem">
+            <div class="cmp-tier-name">Premium ★</div>
+            <div class="cmp-price-row">
+              <div style="font-size:1.4rem;color:white;font-weight:700;margin-bottom:4px">₹1,000</div>
+              <div>/ user / month</div>
+            </div>
+          </div>
+        </div>
+
+        <table class="cmp-table">
+          <tbody>
+            <tr><th>Storage per Workspace</th><td>25 GB / year</td><td>50 GB / year</td></tr>
+            <tr><th>Clients Managed</th><td>300 max</td><td class="cmp-hl-org">Unlimited</td></tr>
+            <tr><th>WhatsApp Integration</th><td>❌</td><td class="cmp-hl-org">✅</td></tr>
+            <tr><th>Email Integration</th><td>Basic</td><td class="cmp-hl-org">Advanced</td></tr>
+            <tr><th>Automation</th><td>❌</td><td class="cmp-hl-org">✅</td></tr>
+            <tr><th>Reports</th><td>Basic</td><td class="cmp-hl-org">Custom</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="cmp-container" data-anim="fade-up">
+        <div class="sec-center" style="margin-bottom:48px;">
+          <div class="tag">PLANS COMPARISON &mdash; 2 of 2</div>
+          <h2 class="h2" style="color:white;font-size:2.4rem;">Feature Access <span style="color:var(--green);font-style:italic">by Plan</span></h2>
+        </div>
+
+        <table class="cmp-table">
+          <thead>
+            <tr>
+              <th style="color:white;font-size:1.1rem">Module / Feature</th>
+              <th style="color:var(--sky);font-size:1.1rem;text-align:center">Essential</th>
+              <th style="color:var(--orange);font-size:1.1rem;text-align:center">Premium ★</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><th>Dashboard</th><td class="cmp-hl">✅</td><td class="cmp-hl">✅</td></tr>
+            <tr><th>Client Management</th><td>Limited</td><td class="cmp-hl-org">Full</td></tr>
+            <tr><th>Client Portal</th><td>❌</td><td class="cmp-hl-org">OTP Login</td></tr>
+            <tr><th>Compliance Tracking</th><td>Basic</td><td class="cmp-hl-org">Full</td></tr>
+            <tr><th>Billing & Invoices</th><td class="cmp-hl">✅</td><td class="cmp-hl">✅</td></tr>
+            <tr><th>Call Center</th><td>Basic</td><td class="cmp-hl-org">Full</td></tr>
+            <tr><th>Timesheet & HR</th><td>❌</td><td class="cmp-hl-org">✅</td></tr>
+            <tr><th>Document Management</th><td>Basic</td><td class="cmp-hl-org">Full</td></tr>
+            <tr><th>Reports</th><td>Basic</td><td class="cmp-hl-org">Full</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div data-anim="fade-up">
+        <h3 class="h3" style="text-align:center">Deployment, Training & Setup Charges</h3>
+        <p style="text-align:center;color:var(--g500);font-size:.9rem;margin-bottom:24px;text-transform:uppercase;letter-spacing:1px;font-weight:700">ONE-TIME COSTS</p>
+        <div class="setup-table-wrap">
+          <table class="setup-table">
+            <thead>
+              <tr>
+                <th>CRM Template</th>
+                <th>Inclusions</th>
+                <th>Cost (Incl. 18% GST)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>CA Practice Manager CRM</strong></td>
+                <td>Setup, custom configuration, historical data migration, team training</td>
+                <td class="st-cost">₹6,372</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <div data-anim="fade-up" style="margin-top:48px">
+        <h3 class="h3" style="text-align:center">Common Add-Ons</h3>
+        <p style="text-align:center;color:var(--g500);font-size:.9rem;margin-bottom:24px;text-transform:uppercase;letter-spacing:1px;font-weight:700">APPLICABLE TO ALL PLANS</p>
+        <div class="setup-table-wrap">
+          <table class="setup-table">
+            <thead>
+              <tr>
+                <th>Add-On Module</th>
+                <th>Cost</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Meta WhatsApp Sender ID</strong></td>
+                <td class="st-cost">₹10,620</td>
+              </tr>
+              <tr>
+                <td><strong>Extra Workspace (Essential)</strong></td>
+                <td class="st-cost">₹9,999 + GST</td>
+              </tr>
+              <tr>
+                <td><strong>Extra Workspace (Premium)</strong></td>
+                <td class="st-cost">₹9,999 + GST</td>
+              </tr>
+              <tr>
+                <td><strong>Additional Storage</strong></td>
+                <td class="st-cost">₹999 / 10 GB / month</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section class="sec">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up">
+      <div class="tag">Use Cases</div>
+      <h2 class="h2">How CA firms use <span style="color:var(--green);font-style:italic">Practice Manager.</span></h2>
+    </div>
+    <div class="uc-grid" data-stagger>
+      <div class="uc-card"><div class="uc-num">01</div><div class="uc-title">Solo CA Practitioners</div><div class="uc-desc">Manage 50–100 clients from a single dashboard. Auto-send WhatsApp reminders for document submission and never miss a filing deadline.</div></div>
+      <div class="uc-card"><div class="uc-num">02</div><div class="uc-title">CA Firms (2–20 staff)</div><div class="uc-desc">Assign clients to staff members, track each team member's workload, and get a bird's-eye compliance status across all clients.</div></div>
+      <div class="uc-card"><div class="uc-num">03</div><div class="uc-title">Tax Consultancy Firms</div><div class="uc-desc">Handle GST registrations, ITR filings, TDS returns, and ROC filings for SME clients — with client portal for document upload.</div></div>
+    </div>
+  </div>
+</section>
+
+<section class="sec" style="background:var(--g50)">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up"><div class="tag">FAQ</div><h2 class="h2">Common <span style="color:var(--green);font-style:italic">questions.</span></h2></div>
+    <div class="faq-list">
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Does the compliance calendar update automatically?<div class="faq-ico">+</div></div><div class="faq-a"><div class="faq-a-inner">Yes. All statutory due dates (GST, TDS, ROC, FEMA) are pre-loaded and update each financial year automatically. You can also add custom deadlines per client.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Can I bulk-send WhatsApp reminders to all clients?<div class="faq-ico">+</div></div><div class="faq-a"><div class="faq-a-inner">Yes. Select all clients with a specific upcoming deadline and send a bulk WhatsApp message via Interakt. You can customize the message template per deadline type.</div></div></div>
+      <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)">Is client data kept confidential?<div class="faq-ico">+</div></div><div class="faq-a"><div class="faq-a-inner">Absolutely. Each CA firm's data is fully isolated. Documents on R2 storage are encrypted. Staff can only access clients assigned to them unless given admin rights.</div></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-grid"></div>
+  <div class="cta-orb-a"></div>
+  <div style="position:relative;z-index:2;text-align:center" data-anim="fade-up">
+    <h2 class="cta-h2">Never miss a deadline <span class="yellow italic">again.</span></h2>
+    <p class="cta-sub">Join 200+ CA firms using SartthiCRM. Start free today.</p>
+    <div class="cta-acts">
+      <a class="btn-cta-y" href="auth.html#register">Start Free Trial →</a>
+      <a class="btn-cta-w" href="contact.html">Talk to Sales</a>
+    </div>
+  </div>
+</section>
+</main>
+</body>
+</html>

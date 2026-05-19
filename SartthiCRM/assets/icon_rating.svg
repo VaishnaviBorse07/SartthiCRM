@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="5-Star Rating">
+  <defs>
+    <radialGradient id="g_rating" cx="50%" cy="50%" r="60%">
+      <stop offset="0%" stop-color="#fef9c3"/>
+      <stop offset="60%" stop-color="#fde68a"/>
+      <stop offset="100%" stop-color="#fde68a"/>
+    </radialGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#g_rating)"/>
+  <!-- 5 stars centered -->
+  <!-- Star 1 -->
+  <path d="M14,52 L17.5,41 L21,52 L11,45 L24,45 Z" fill="#d97706"/>
+  <!-- Star 2 -->
+  <path d="M28,52 L31.5,41 L35,52 L25,45 L38,45 Z" fill="#d97706"/>
+  <!-- Star 3 (center) -->
+  <path d="M42,52 L45.5,41 L49,52 L39,45 L52,45 Z" fill="#d97706"/>
+  <!-- Star 4 -->
+  <path d="M56,52 L59.5,41 L63,52 L53,45 L66,45 Z" fill="#d97706"/>
+  <!-- Star 5 -->
+  <path d="M70,52 L73.5,41 L77,52 L67,45 L80,45 Z" fill="#d97706"/>
+</svg>

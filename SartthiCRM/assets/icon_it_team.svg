@@ -1,0 +1,26 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-label="IT Teams">
+  <defs>
+    <linearGradient id="g_it" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae6fd"/>
+      <stop offset="100%" stop-color="#38bdf8"/>
+    </linearGradient>
+  </defs>
+  <circle cx="50" cy="50" r="48" fill="url(#g_it)"/>
+  <!-- Laptop body / base -->
+  <rect x="22" y="62" width="56" height="5" rx="2.5" fill="white"/>
+  <!-- Laptop screen frame -->
+  <rect x="30" y="28" width="40" height="34" rx="3" fill="white"/>
+  <!-- Laptop screen -->
+  <rect x="33" y="31" width="34" height="28" rx="1.5" fill="url(#g_it)"/>
+  <!-- Funnel icon on screen -->
+  <!-- Funnel shape -->
+  <path d="M38,35 L62,35 L55,44 L55,54 L45,54 L45,44 Z" fill="white" opacity="0.85"/>
+  <!-- Funnel spout -->
+  <rect x="47" y="54" width="6" height="5" rx="1" fill="white" opacity="0.85"/>
+  <!-- Pipeline stages bars to the right of funnel -->
+  <rect x="57" y="37" width="10" height="5" rx="1" fill="white" opacity="0.6"/>
+  <rect x="57" y="45" width="7" height="5" rx="1" fill="white" opacity="0.6"/>
+  <rect x="57" y="53" width="4" height="4" rx="1" fill="white" opacity="0.6"/>
+  <!-- Hinge notch -->
+  <rect x="46" y="62" width="8" height="3" rx="1.5" fill="url(#g_it)"/>
+</svg>

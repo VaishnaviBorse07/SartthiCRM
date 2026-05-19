@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Partners – SartthiCRM</title>
+<meta name="description" content="SartthiCRM Partner Program — Become a reseller, referral partner, or technology partner.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="home.css">
+<style>
+/* PARTNER TIERS */
+.tier-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:56px; }
+.tier-card { background:white; border-radius:24px; border:1.5px solid var(--g200);
+  padding:32px; position:relative; overflow:hidden; transition:all .4s ease; }
+.tier-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px; }
+.tier-card.silver::before { background:linear-gradient(90deg,#94A3B8,#CBD5E1); }
+.tier-card.gold::before { background:linear-gradient(90deg,var(--yellow),var(--yellow-d)); }
+.tier-card.platinum::before { background:linear-gradient(90deg,var(--sky),var(--purple)); }
+.tier-card:hover { transform:translateY(-8px); box-shadow:var(--sh-lg); }
+.tier-badge { display:inline-block; padding:4px 12px; border-radius:100px;
+  font-size:.7rem; font-weight:700; margin-bottom:20px; }
+.tier-card.silver .tier-badge { background:var(--g100); color:var(--g600); }
+.tier-card.gold .tier-badge { background:var(--yellow-l); color:#92400E; }
+.tier-card.platinum .tier-badge { background:var(--sky-l); color:var(--sky-dd); }
+.tier-name { font-size:1.3rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.tier-desc { font-size:.84rem; color:var(--g500); line-height:1.6; margin-bottom:20px; }
+.tier-benefits { display:flex; flex-direction:column; gap:8px; }
+.tb { display:flex; align-items:flex-start; gap:8px; font-size:.81rem; color:var(--navy); }
+.tb::before { content:'✦'; color:var(--sky); font-size:.62rem; margin-top:3px; flex-shrink:0; }
+.tier-cta { display:block; text-align:center; margin-top:24px; padding:11px;
+  border-radius:100px; font-size:.86rem; font-weight:700;
+  border:1.5px solid var(--g200); color:var(--navy); transition:all .3s; }
+.tier-cta:hover { border-color:var(--sky); color:var(--sky); }
+
+/* CURRENT PARTNERS */
+.partners-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:24px; margin-top:48px; }
+.partner-card { background:white; border-radius:22px; border:1.5px solid var(--g200);
+  padding:32px; text-align:center; transition:all .35s ease; position:relative; }
+.partner-card:hover { border-color:var(--sky); transform:translateY(-6px); box-shadow:var(--sh-lg); }
+.partner-card.featured { border-color:var(--sky); background:linear-gradient(135deg,var(--sky-ll),white); }
+.featured-badge { position:absolute; top:-12px; left:50%; transform:translateX(-50%);
+  background:linear-gradient(90deg,var(--sky),var(--sky-d)); color:white;
+  font-size:.68rem; font-weight:700; padding:4px 16px; border-radius:20px; white-space:nowrap;
+  display:flex; align-items:center; gap:6px; }
+.partner-logo { width:72px; height:72px; border-radius:20px; margin:0 auto 16px;
+  display:flex; align-items:center; justify-content:center; font-size:2rem;
+  background:var(--g50); border:1px solid var(--g200); }
+.partner-name { font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.partner-type { display:inline-block; padding:3px 10px; border-radius:6px;
+  font-size:.66rem; font-weight:700; background:var(--sky-l); color:var(--sky-dd); margin-bottom:12px; }
+.partner-desc { font-size:.82rem; color:var(--g500); line-height:1.6; }
+
+/* BECOME A PARTNER FORM */
+.partner-form-wrap { background:white; border-radius:24px; border:1.5px solid var(--g200);
+  box-shadow:var(--sh-md); padding:40px; max-width:680px; margin:60px auto 0; }
+.pf-title { font-size:1.4rem; font-weight:700; color:var(--navy); margin-bottom:6px; }
+.pf-sub { font-size:.86rem; color:var(--g500); margin-bottom:28px; }
+
+/* WHY PARTNER */
+.why-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:16px; margin-top:48px; }
+.why-card { background:white; border-radius:16px; border:1.5px solid var(--g200);
+  padding:20px; text-align:center; transition:all .3s ease; }
+.why-card:hover { border-color:var(--sky); transform:translateY(-4px); box-shadow:var(--sh-md); }
+.wc-ico { font-size:1.8rem; margin-bottom:10px; display:block; }
+.wc-name { font-size:.9rem; font-weight:700; color:var(--navy); margin-bottom:5px; }
+.wc-desc { font-size:.76rem; color:var(--g500); line-height:1.5; }
+
+@media(max-width:900px) { .tier-grid{grid-template-columns:1fr;} .partners-grid{grid-template-columns:1fr 1fr;} .why-grid{grid-template-columns:1fr 1fr;} }
+@media(max-width:600px) { .partners-grid{grid-template-columns:1fr;} .why-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<script src="nav.js" defer></script>
+<main>
+
+<!-- HERO -->
+<section class="page-hero-premium page-hero-dark">
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="page-hero-inner" data-anim="fade-up">
+  <div style="position:relative;z-index:2" data-anim="fade-up">
+    <div class="tag tag-light"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-1.1 0-2-.9-2-2v-4a2 2 0 0 1 2-2h3"/><path d="M16 3v2a4 4 0 0 1 4 4h3c1.1 0 2 .9 2 2v4a2 2 0 0 1-2 2h-3"/></svg> Partner Program</div>
+    <h1 class="h1">Grow together with<br><span>SartthiCRM.</span></h1>
+    <p class="lead">Join India's fastest-growing CRM partner network. Earn commissions, get co-marketing support, and build a recurring revenue stream.</p>
+    <a class="btn-yellow" href="#partner-form">Become a Partner →</a>
+  </div>
+</div>
+</section>
+
+<!-- WHY PARTNER -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up">
+      <div class="tag">Why Partner with Us</div>
+      <h2 class="h2">Built for <span class="sky italic">mutual growth.</span></h2>
+    </div>
+    <div class="why-grid" data-stagger>
+      <div class="why-card"><span class="wc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg></span><div class="wc-name">Up to 30% Commission</div><div class="wc-desc">Earn recurring monthly commissions on every client you refer or resell to.</div></div>
+      <div class="why-card"><span class="wc-ico">📣</span><div class="wc-name">Co-Marketing Support</div><div class="wc-desc">Joint webinars, co-branded materials, and social media promotion for your business.</div></div>
+      <div class="why-card"><span class="wc-ico"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg></span><div class="wc-name">Free Training & Certification</div><div class="wc-desc">Access our partner training portal, demo accounts, and product certification program.</div></div>
+      <div class="why-card"><span class="wc-ico">🛠️</span><div class="wc-name">Dedicated Partner Support</div><div class="wc-desc">Priority support line, partner portal access, and a dedicated account manager.</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PARTNER TIERS -->
+<section class="sec" style="background:var(--g50)">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up">
+      <div class="tag">Partner Tiers</div>
+      <h2 class="h2">Choose your <span class="sky italic">partnership level.</span></h2>
+    </div>
+    <div class="tier-grid" data-stagger>
+      <div class="tier-card silver">
+        <div class="tier-badge">🥈 Silver Partner</div>
+        <div class="tier-name">Referral Partner</div>
+        <div class="tier-desc">Refer clients to SartthiCRM and earn a commission. No sales target. No commitment.</div>
+        <div class="tier-benefits">
+          <div class="tb">15% commission on first year revenue</div>
+          <div class="tb">Access to referral portal & tracking</div>
+          <div class="tb">Co-branded pitch deck</div>
+          <div class="tb">Partner badge for your website</div>
+        </div>
+        <a href="#partner-form" class="tier-cta">Apply as Referral Partner →</a>
+      </div>
+      <div class="tier-card gold">
+        <div class="tier-badge">🥇 Gold Partner</div>
+        <div class="tier-name">Reseller Partner</div>
+        <div class="tier-desc">Resell SartthiCRM under your brand with a dedicated discount structure and co-marketing support.</div>
+        <div class="tier-benefits">
+          <div class="tb">25% commission + volume bonuses</div>
+          <div class="tb">White-label ready (logo/branding)</div>
+          <div class="tb">Dedicated demo environment</div>
+          <div class="tb">Sales training & certification</div>
+          <div class="tb">Quarterly business reviews</div>
+        </div>
+        <a href="#partner-form" class="tier-cta" style="border-color:var(--yellow);color:var(--yellow-d)">Apply as Reseller →</a>
+      </div>
+      <div class="tier-card platinum">
+        <div class="tier-badge">💎 Platinum Partner</div>
+        <div class="tier-name">Technology Partner</div>
+        <div class="tier-desc">Integrate your product with SartthiCRM via API and co-sell to a combined customer base.</div>
+        <div class="tier-benefits">
+          <div class="tb">Full API & webhook access</div>
+          <div class="tb">Listed in integration marketplace</div>
+          <div class="tb">Joint go-to-market campaigns</div>
+          <div class="tb">Revenue sharing model</div>
+          <div class="tb">Priority technical support</div>
+        </div>
+        <a href="#partner-form" class="tier-cta" style="border-color:var(--sky);color:var(--sky)">Apply as Tech Partner →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRENT PARTNERS -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up">
+      <div class="tag">Our Partners</div>
+      <h2 class="h2">Companies we're <span class="sky italic">proud to work with.</span></h2>
+    </div>
+    <div class="partners-grid" data-stagger style="display:flex; justify-content:center;">
+      <!-- CLIQUS INNOVATION - Featured -->
+      <div class="partner-card featured" style="max-width:400px; width:100%;">
+        <div class="featured-badge"><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg> Featured Partner</div>
+        <img src="assets/cliqus.png" alt="Cliqus Innovation" style="height:50px; width:auto; margin:0 auto 20px; display:block; object-fit:contain;">
+        <div class="partner-name">Cliqus Innovation</div>
+        <div class="partner-type">Technology Partner</div>
+        <div class="partner-desc">Cliqus Innovation is our premier technology partner, co-developing advanced AI modules and digital transformation solutions for Indian SMEs. Together, we power next-generation CRM capabilities for IT, CA, and Retail sectors.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- BECOME A PARTNER FORM -->
+<section class="sec" style="background:var(--g50)" id="partner-form">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up">
+      <div class="tag">Join Our Partner Network</div>
+      <h2 class="h2">Ready to <span class="sky italic">become a partner?</span></h2>
+      <p class="lead" style="max-width:480px;margin:16px auto 0">Fill in the form below. Our partner team will reach out within 24 hours.</p>
+    </div>
+    <div class="partner-form-wrap" data-anim="fade-up">
+      <div class="pf-title">Partner Application Form</div>
+      <div class="pf-sub">Tell us about your company and how you'd like to partner with SartthiCRM.</div>
+      <div id="pf-form">
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Full Name *</label><input class="form-input" type="text" id="pfn" placeholder="Your full name"></div>
+          <div class="form-group"><label class="form-label">Company Name *</label><input class="form-input" type="text" id="pco" placeholder="Company Pvt. Ltd."></div>
+        </div>
+        <div class="form-row">
+          <div class="form-group"><label class="form-label">Business Email *</label><input class="form-input" type="email" id="pem" placeholder="you@company.com"></div>
+          <div class="form-group"><label class="form-label">WhatsApp / Phone *</label><input class="form-input" type="tel" id="pph" placeholder="+91 98765 43210"></div>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Website URL</label>
+          <input class="form-input" type="url" placeholder="https://yourcompany.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Partnership Type *</label>
+          <select class="form-select" id="ptyp">
+            <option value="">Select partnership type</option>
+            <option>Referral Partner (Silver)</option>
+            <option>Reseller Partner (Gold)</option>
+            <option>Technology Partner (Platinum)</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Your Target Market / Industry Focus</label>
+          <select class="form-select">
+            <option value="">Select your focus area</option>
+            <option>IT & Technology</option>
+            <option>CA Firms & Finance</option>
+            <option>Retail & Distribution</option>
+            <option>Multiple Industries</option>
+            <option>Other</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label">Tell us about your company and why you want to partner *</label>
+          <textarea class="form-textarea" id="pmsg" style="min-height:120px" placeholder="Describe your company, your customer base, and how you see this partnership working…"></textarea>
+        </div>
+        <div class="form-group" style="display:flex;align-items:flex-start;gap:8px">
+          <input type="checkbox" id="pagreement" style="width:16px;height:16px;margin-top:2px;accent-color:var(--sky)">
+          <label for="pagreement" style="font-size:.78rem;color:var(--g600);cursor:pointer;line-height:1.5">I agree to the <a href="#" style="color:var(--sky)">Partner Program Terms</a> and <a href="#" style="color:var(--sky)">Privacy Policy</a></label>
+        </div>
+        <button class="form-submit" onclick="submitPartner()">Submit Partner Application →</button>
+      </div>
+      <div id="pf-success" style="text-align:center;padding:40px 20px;display:none">
+        <div style="font-size:2.5rem;margin-bottom:12px"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-1.1 0-2-.9-2-2v-4a2 2 0 0 1 2-2h3"/><path d="M16 3v2a4 4 0 0 1 4 4h3c1.1 0 2 .9 2 2v4a2 2 0 0 1-2 2h-3"/></svg></div>
+        <h3 style="margin-bottom:8px;color:var(--navy)">Application submitted!</h3>
+        <p style="color:var(--g500);font-size:.88rem">Our partner team will reach out to you within 24 hours via WhatsApp and email.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-grid"></div>
+  <div class="cta-orb-a"></div>
+  <div style="position:relative;z-index:2;text-align:center" data-anim="fade-up">
+    <h2 class="cta-h2">Start earning with <span class="yellow italic">SartthiCRM.</span></h2>
+    <p class="cta-sub">Join our growing partner network. Earn up to 30% commission.</p>
+    <div class="cta-acts">
+      <a class="btn-cta-y" href="#partner-form">Become a Partner →</a>
+      <a class="btn-cta-w" href="contact.html">Talk to Our Team</a>
+    </div>
+  </div>
+</section>
+</main>
+
+<script>
+function submitPartner() {
+  const fn = document.getElementById('pfn').value;
+  const em = document.getElementById('pem').value;
+  const ph = document.getElementById('pph').value;
+  const typ = document.getElementById('ptyp').value;
+  const msg = document.getElementById('pmsg').value;
+  const agree = document.getElementById('pagreement').checked;
+  if (!fn || !em || !ph || !typ || !msg) { showToast('<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Please fill all required fields'); return; }
+  if (!agree) { showToast('<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg> Please accept the Partner Terms'); return; }
+  document.getElementById('pf-form').style.display = 'none';
+  document.getElementById('pf-success').style.display = 'block';
+  showToast('<svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M16 21v-2a4 4 0 0 0-4-4H5c-1.1 0-2-.9-2-2v-4a2 2 0 0 1 2-2h3"/><path d="M16 3v2a4 4 0 0 1 4 4h3c1.1 0 2 .9 2 2v4a2 2 0 0 1-2 2h-3"/></svg> Partner application submitted!');
+}
+</script>
+</body>
+</html>

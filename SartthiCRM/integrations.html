@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Integrations – SartthiCRM</title>
+<meta name="description" content="SartthiCRM connects with Interakt, Cloudflare R2, Google Contacts, Brevo, Razorpay, Tally, and more.">
+<link rel="stylesheet" href="styles.css">
+<link rel="stylesheet" href="home.css">
+<style>
+/* FEATURED INTEGRATIONS */
+.integ-featured { display:grid; grid-template-columns:repeat(2,1fr); gap:24px; margin-top:56px; }
+.integ-big-card { background:white; border-radius:24px; border:1.5px solid var(--g200);
+  padding:32px; display:flex; gap:24px; align-items:flex-start;
+  transition:all .4s ease; position:relative; overflow:hidden; }
+.integ-big-card::before { content:''; position:absolute; top:0; left:0; right:0; height:4px;
+  background:linear-gradient(90deg,var(--sky),var(--yellow)); }
+.integ-big-card:hover { border-color:var(--sky); transform:translateY(-6px); box-shadow:var(--sh-lg); }
+.ibig-ico { width:64px; height:64px; border-radius:18px; display:flex;
+  align-items:center; justify-content:center; font-size:2rem;
+  flex-shrink:0; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
+.integ-big-card:hover .ibig-ico { transform:scale(1.15) rotate(-6deg); }
+.ibig-name { font-size:1.1rem; font-weight:700; color:var(--navy); margin-bottom:4px; }
+.ibig-badge { display:inline-block; padding:3px 10px; border-radius:6px;
+  font-size:.65rem; font-weight:700; background:var(--sky-l);
+  color:var(--sky-dd); margin-bottom:10px; }
+.ibig-desc { font-size:.84rem; color:var(--g500); line-height:1.65; margin-bottom:14px; }
+.ibig-features { display:flex; flex-wrap:wrap; gap:6px; }
+.ibig-feat { padding:3px 10px; background:var(--g100); border-radius:6px;
+  font-size:.66rem; font-weight:600; color:var(--g600); }
+
+/* ALL INTEGRATIONS GRID */
+.integ-all-grid { display:grid; grid-template-columns:repeat(4,1fr); gap:14px; margin-top:40px; }
+.integ-card { background:white; border-radius:16px; border:1.5px solid var(--g200);
+  padding:20px; display:flex; flex-direction:column; align-items:center;
+  text-align:center; gap:10px; cursor:pointer; transition:all .35s ease; }
+.integ-card:hover { border-color:var(--sky); transform:translateY(-4px) scale(1.03);
+  box-shadow:var(--sh-md); }
+.integ-ico { font-size:1.8rem; transition:transform .4s cubic-bezier(.34,1.56,.64,1); }
+.integ-card:hover .integ-ico { transform:scale(1.25) rotate(-6deg); }
+.integ-name { font-size:.8rem; font-weight:700; color:var(--navy); }
+.integ-cat { font-size:.64rem; color:var(--g400); font-weight:500; }
+
+/* HOW IT WORKS */
+.hiw-grid { display:grid; grid-template-columns:repeat(3,1fr); gap:20px; margin-top:48px; }
+.hiw-card { background:white; border-radius:20px; border:1.5px solid var(--g200);
+  padding:28px; text-align:center; transition:all .35s ease; }
+.hiw-card:hover { border-color:var(--sky); transform:translateY(-5px); box-shadow:var(--sh-md); }
+.hiw-ico { font-size:2.2rem; margin-bottom:14px; display:block; }
+.hiw-title { font-size:.95rem; font-weight:700; color:var(--navy); margin-bottom:8px; }
+.hiw-desc { font-size:.82rem; color:var(--g500); line-height:1.6; }
+
+@media(max-width:900px) { .integ-featured{grid-template-columns:1fr;} .integ-all-grid{grid-template-columns:1fr 1fr 1fr;} .hiw-grid{grid-template-columns:1fr;} }
+@media(max-width:480px) { .integ-all-grid{grid-template-columns:1fr 1fr;} }
+</style>
+</head>
+<body>
+<script src="nav.js" defer></script>
+<main>
+
+<section class="page-hero-premium">
+  <div class="hero-grid-lines" aria-hidden="true"></div>
+  <div class="page-hero-inner" data-anim="fade-up">
+    <div class="tag">Integrations</div>
+    <h1 class="h1">Connects with the <span class="sky italic">tools you already use.</span></h1>
+    <p class="lead" style="max-width:580px;margin:16px auto 0">SartthiCRM integrates natively with India's most-used business tools. No developer required — everything works out of the box.</p>
+  </div>
+</section>
+<div class="logo-strip" data-anim="fade-up">
+  <img class="brand-logo" src="assets/logos/interakt.svg" alt="Interakt">
+  <img class="brand-logo" src="assets/logos/brevo.svg" alt="Brevo">
+  <img class="brand-logo" src="assets/logos/google-workspace.svg" alt="Google Workspace">
+  <img class="brand-logo" src="assets/logos/razorpay.svg" alt="Razorpay">
+  <img class="brand-logo" src="assets/logos/aws-s3.svg" alt="AWS S3">
+  <img class="brand-logo" src="assets/logos/cloudflare-r2.svg" alt="Cloudflare R2">
+  <img class="brand-logo" src="assets/logos/tally.svg" alt="Tally">
+  <img class="brand-logo" src="assets/logos/odoo.svg" alt="Odoo">
+  <img class="brand-logo" src="assets/logos/marg.svg" alt="Marg ERP">
+</div>
+<div class="data-sync-viz" data-anim="fade-up">
+  <div class="sync-node"><strong>SartthiCRM</strong><span>Your hub</span></div>
+  <span class="sync-pipe">→</span>
+  <div class="sync-node"><strong>10+ tools</strong><span>Connected</span></div>
+  <span class="sync-pipe">→</span>
+  <div class="sync-node"><strong>Live sync</strong><span>Bi-directional data</span></div>
+</div>
+
+<!-- FEATURED INTEGRATIONS -->
+<section class="sec">
+  <div class="container">
+    <div class="sec-center" data-anim="fade-up">
+      <div class="tag">Core Integrations</div>
+      <h2 class="h2">Our four <span class="sky italic">key integration partners.</span></h2>
+    </div>
+    <div class="integ-featured" data-stagger>
+
+      <!-- INTERAKT -->
+      <div class="integ-big-card">
+        <div class="ibig-ico" style="background:#E6F5F1;color:#009E74"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor" stroke="none"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zM9 13H7v-2h2v2zm4 0h-2v-2h2v2zm4 0h-2v-2h2v2z"/></svg></div>
+        <div>
+          <div class="ibig-name">Interakt</div>
+          <div class="ibig-badge">WhatsApp Business API</div>
+          <div class="ibig-desc">Interakt powers all WhatsApp communication in SartthiCRM — 2-way messaging, campaign broadcasts, automated template messages, and customer support conversations — fully synced with your CRM data in real-time.</div>
+          <div class="ibig-features">
+            <div class="ibig-feat">2-Way Messaging</div>
+            <div class="ibig-feat">Bulk Campaigns</div>
+            <div class="ibig-feat">Template Automation</div>
+            <div class="ibig-feat">Bot Workflows</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- CLOUDFLARE R2 -->
+      <div class="integ-big-card">
+        <div class="ibig-ico" style="background:#FEF3E8;color:#F38020"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M17.5 19H9a7 7 0 1 1 6.71-9h1.79a4.5 4.5 0 1 1 0 9Z"/></svg></div>
+        <div>
+          <div class="ibig-name">Cloudflare R2 Storage</div>
+          <div class="ibig-badge">Cloud Document Storage</div>
+          <div class="ibig-desc">All documents uploaded to SartthiCRM — contracts, ITR acknowledgements, invoices, client files — are stored securely on Cloudflare R2. Lightning-fast access, AES-256 encryption, and zero egress fees.</div>
+          <div class="ibig-features">
+            <div class="ibig-feat">Unlimited Storage</div>
+            <div class="ibig-feat">AES-256 Encrypted</div>
+            <div class="ibig-feat">Expiring Share Links</div>
+            <div class="ibig-feat">Global CDN</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- GOOGLE CONTACTS -->
+      <div class="integ-big-card">
+        <div class="ibig-ico" style="background:#E8F0FE;color:#4285F4"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2a7.2 7.2 0 0 1-6-3.22c.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08a7.2 7.2 0 0 1-6 3.22z"/></svg></div>
+        <div>
+          <div class="ibig-name">Google Contacts</div>
+          <div class="ibig-badge">Contact Sync</div>
+          <div class="ibig-desc">Bi-directional sync between SartthiCRM and Google Contacts. Every lead or client you add in CRM automatically appears in your Google Contacts — and vice versa. Works with Google Workspace and personal Gmail.</div>
+          <div class="ibig-features">
+            <div class="ibig-feat">2-Way Sync</div>
+            <div class="ibig-feat">Google Workspace</div>
+            <div class="ibig-feat">Auto-Update</div>
+            <div class="ibig-feat">Dedup Detection</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- BREVO -->
+      <div class="integ-big-card">
+        <div class="ibig-ico" style="background:#E6EEEB;color:#004F34"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+        <div>
+          <div class="ibig-name">Brevo</div>
+          <div class="ibig-badge">Email Marketing & Transactional</div>
+          <div class="ibig-desc">Brevo (formerly Sendinblue) handles all email communication in SartthiCRM — from transactional notifications (invoice sent, ticket resolved) to marketing campaigns and automated drip sequences.</div>
+          <div class="ibig-features">
+            <div class="ibig-feat">Campaign Builder</div>
+            <div class="ibig-feat">Transactional Email</div>
+            <div class="ibig-feat">Drip Sequences</div>
+            <div class="ibig-feat">Open Rate Tracking</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ALL INTEGRATIONS -->
+    <div style="margin-top:72px" data-anim="fade-up">
+      <div class="sec-center" style="margin-bottom:32px">
+        <div class="tag">All Integrations</div>
+        <h2 class="h2">Everything <span class="sky italic">that connects.</span></h2>
+      </div>
+    </div>
+    
+    <!-- Category Tabs -->
+    <div class="cat-tabs" data-anim="fade-up" style="margin-bottom:48px;">
+      <button class="ctab on" onclick="filterInteg(this,'all')">All Integrations</button>
+      <button class="ctab" onclick="filterInteg(this,'comm')">🔹 WhatsApp & Comm</button>
+      <button class="ctab" onclick="filterInteg(this,'erp')">🔹 Payments & ERP</button>
+      <button class="ctab" onclick="filterInteg(this,'social')">🔹 Social & CRM</button>
+      <button class="ctab" onclick="filterInteg(this,'storage')">🔹 Storage & Auto</button>
+    </div>
+
+    <div class="integ-all-grid" data-stagger>
+      <div class="integ-card" data-cat="erp"><div class="integ-ico" style="color:#0F62FE"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M4 22h16v-2H4v2zm12.5-4H20v-2h-3.5l1.5-2H21v-2h-2.5l1.5-2H22v-2h-1.5l1.5-2H22V4H8.5l-4 14h3l4-14h1.5l-4 14h2l4-14h1.5l-4 14h2l3.5-12z"/></svg></div><div class="integ-name">Razorpay</div><div class="integ-cat">Payment Gateway</div></div>
+      <div class="integ-card" data-cat="erp"><div class="integ-ico" style="color:#9C1D26"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M21 4H3v16h18V4zM5 18V6h14v12H5zm2-10h10v2H7V8zm0 4h10v2H7v-2z"/></svg></div><div class="integ-name">Tally ERP</div><div class="integ-cat">Accounting ERP</div></div>
+      <div class="integ-card" data-cat="erp"><div class="integ-ico" style="color:#714B67"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.41 0-8-3.59-8-8s3.59-8 8-8 8 3.59 8 8-3.59 8-8 8z"/></svg></div><div class="integ-name">Odoo</div><div class="integ-cat">Business ERP</div></div>
+      <div class="integ-card" data-cat="erp"><div class="integ-ico" style="color:#EF4444"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M3 3h18v18H3V3zm16 16V5H5v14h14zm-4-4h-2v2H9v-2H7v-2h2v-2h2v2h2v2z"/></svg></div><div class="integ-name">Marg ERP</div><div class="integ-cat">Retail/Pharma ERP</div></div>
+      <div class="integ-card" data-cat="storage"><div class="integ-ico" style="color:#4285F4"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M19 4h-1V3c0-.55-.45-1-1-1s-1 .45-1 1v1H8V3c0-.55-.45-1-1-1s-1 .45-1 1v1H5c-1.11 0-1.99.9-1.99 2L3 20a2 2 0 0 0 2 2h14c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 16H5V10h14v10zM5 8V6h14v2H5z"/></svg></div><div class="integ-name">Google Calendar</div><div class="integ-cat">Calendar Sync</div></div>
+      <div class="integ-card" data-cat="storage"><div class="integ-ico" style="color:#0F9D58"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M19.36 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04A5.994 5.994 0 0 0 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.64-4.96z"/></svg></div><div class="integ-name">Google Drive</div><div class="integ-cat">File Storage</div></div>
+      <div class="integ-card" data-cat="social"><div class="integ-ico" style="color:#E41A22"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm1 15h-2v-2h2v2zm0-4h-2V7h2v6z"/></svg></div><div class="integ-name">IndiaMART</div><div class="integ-cat">Lead Source</div></div>
+      <div class="integ-card" data-cat="storage"><div class="integ-ico" style="color:#FF4F00"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M13 2.05v3.03c3.39.49 6 3.39 6 6.92 0 .9-.22 1.76-.61 2.53l2.62 1.51c.64-1.21.99-2.58.99-4.04 0-4.84-3.65-8.86-8.38-9.95zM12 19c-3.87 0-7-3.13-7-7 0-3.53 2.61-6.43 6-6.92V2.05c-4.73 1.09-8.38 5.11-8.38 9.95 0 5.52 4.48 10 10 10 1.63 0 3.16-.39 4.53-1.09l-1.51-2.62A6.963 6.963 0 0 1 12 19z"/></svg></div><div class="integ-name">Zapier</div><div class="integ-cat">No-code Automation</div></div>
+      <div class="integ-card" data-cat="social"><div class="integ-ico" style="color:#0052B4"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg></div><div class="integ-name">JustDial</div><div class="integ-cat">Lead Source</div></div>
+      <div class="integ-card" data-cat="social"><div class="integ-ico" style="color:#0668E1"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.04c-5.5 0-10 4.49-10 10.02 0 5 3.66 9.15 8.44 9.9v-7H7.9v-2.9h2.54V9.85c0-2.51 1.49-3.89 3.78-3.89 1.09 0 2.23.19 2.23.19v2.47h-1.26c-1.24 0-1.63.77-1.63 1.56v1.88h2.78l-.45 2.9h-2.33v7a10 10 0 0 0 8.44-9.9c0-5.53-4.5-10.02-10-10.02z"/></svg></div><div class="integ-name">Facebook Ads</div><div class="integ-cat">Social Lead Source</div></div>
+      <div class="integ-card" data-cat="social"><div class="integ-ico" style="color:#E1306C"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M7.8 2h8.4C19.4 2 22 4.6 22 7.8v8.4a5.8 5.8 0 0 1-5.8 5.8H7.8C4.6 22 2 19.4 2 16.2V7.8A5.8 5.8 0 0 1 7.8 2zm-.2 2A3.6 3.6 0 0 0 4 7.6v8.8C4 18.39 5.61 20 7.6 20h8.8a3.6 3.6 0 0 0 3.6-3.6V7.6C20 5.61 18.39 4 16.4 4H7.6zm9.65 1.5a1.25 1.25 0 0 1 1.25 1.25A1.25 1.25 0 0 1 17.25 8 1.25 1.25 0 0 1 16 6.75a1.25 1.25 0 0 1 1.25-1.25zM12 7a5 5 0 0 1 5 5 5 5 0 0 1-5 5 5 5 0 0 1-5-5 5 5 0 0 1 5-5zm0 2a3 3 0 0 0-3 3 3 3 0 0 0 3 3 3 3 0 0 0 3-3 3 3 0 0 0-3-3z"/></svg></div><div class="integ-name">Instagram DMs</div><div class="integ-cat">Social CRM</div></div>
+      <div class="integ-card" data-cat="comm"><div class="integ-ico" style="color:#F22F46"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4 13h-3v3h-2v-3H8v-2h3V9h2v3h3v3z"/></svg></div><div class="integ-name">Twilio VoIP</div><div class="integ-cat">Voice Calling</div></div>
+    </div>
+
+    <!-- HOW IT WORKS -->
+    <div style="margin-top:72px" data-anim="fade-up">
+      <div class="sec-center" style="margin-bottom:32px">
+        <div class="tag">Setup</div>
+        <h2 class="h2">Connect in <span class="sky italic">minutes, not days.</span></h2>
+      </div>
+    </div>
+    <div class="hiw-grid" data-stagger>
+      <div class="hiw-card"><span class="hiw-ico"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1 0 2.83 2 2 0 0 1-2.83 0l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-2 2 2 2 0 0 1-2-2v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1-2-2 2 2 0 0 1 2-2h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 0-2.83 2 2 0 0 1 2.83 0l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 2-2 2 2 0 0 1 2 2v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 0 2 2 0 0 1 0 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 2 2 2 2 0 0 1-2 2h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></span><div class="hiw-title">1. Go to Integrations</div><div class="hiw-desc">Navigate to Settings → Integrations in your SartthiCRM dashboard.</div></div>
+      <div class="hiw-card"><span class="hiw-ico"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5m0 0l3 3L22 7l-3-3m-3.5 3.5L19 4"/></svg></span><div class="hiw-title">2. Enter Your API Key</div><div class="hiw-desc">Paste your API key from Interakt, Brevo, or Razorpay — takes 60 seconds.</div></div>
+      <div class="hiw-card"><span class="hiw-ico"><svg xmlns="http://www.w3.org/2000/svg" width="100%" height="100%" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg></span><div class="hiw-title">3. You're Connected!</div><div class="hiw-desc">Integration goes live instantly. Messages, emails, and payments start flowing automatically.</div></div>
+    </div>
+
+    <!-- CTA for custom -->
+    <div style="text-align:center;margin-top:56px;background:var(--g50);border-radius:22px;padding:40px" data-anim="fade-up">
+      <h3 class="h3" style="margin-bottom:12px">Need a custom integration?</h3>
+      <p class="lead-sm" style="margin-bottom:24px;max-width:440px;margin-left:auto;margin-right:auto">Our API lets you connect SartthiCRM to any tool your business uses.</p>
+      <a class="btn-primary" href="contact.html">Talk to Our Integration Team →</a>
+    </div>
+
+  </div>
+</section>
+
+<section class="cta-sec">
+  <div class="cta-grid"></div>
+  <div class="cta-orb-a"></div>
+  <div style="position:relative;z-index:2;text-align:center" data-anim="fade-up">
+    <h2 class="cta-h2">Everything connected. <span class="yellow italic">One CRM.</span></h2>
+    <p class="cta-sub">Start your free trial and connect your first integration in minutes.</p>
+    <div class="cta-acts">
+      <a class="btn-cta-y" href="auth.html#register">Start Free Trial →</a>
+      <a class="btn-cta-w" href="contact.html">Book a Demo</a>
+    </div>
+  </div>
+</section>
+</main>
+<script>
+function filterInteg(btn, cat) {
+  document.querySelectorAll('.ctab').forEach(b => b.classList.remove('on'));
+  btn.classList.add('on');
+  document.querySelectorAll('.integ-card').forEach(card => {
+    if (cat === 'all' || card.dataset.cat === cat) {
+      card.style.display = 'flex';
+    } else {
+      card.style.display = 'none';
+    }
+  });
+}
+</script>
+</body>
+</html>

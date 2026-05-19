@@ -1,0 +1,200 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 750" role="img" aria-label="SartthiCRM Sales Performance Dashboard">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b"/></linearGradient>
+    <linearGradient id="cyan" x1="0" y1="0" x2="1" y2="0"><stop offset="0%" stop-color="#06b6d4"/><stop offset="100%" stop-color="#3b82f6"/></linearGradient>
+    <linearGradient id="yellow" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#fbbf24"/><stop offset="100%" stop-color="#f59e0b"/></linearGradient>
+    <linearGradient id="chartArea" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#06b6d4" stop-opacity="0.4"/><stop offset="100%" stop-color="#06b6d4" stop-opacity="0.02"/></linearGradient>
+  </defs>
+
+  <rect width="1200" height="750" fill="url(#bg)"/>
+  <!-- Subtle grid pattern -->
+  <g opacity="0.05">
+    <line x1="0" y1="150" x2="1200" y2="150" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="300" x2="1200" y2="300" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="450" x2="1200" y2="450" stroke="white" stroke-width="0.5"/>
+    <line x1="0" y1="600" x2="1200" y2="600" stroke="white" stroke-width="0.5"/>
+  </g>
+
+  <!-- Left sidebar -->
+  <rect width="180" height="750" fill="#0f172a" opacity="0.8"/>
+  <rect x="16" y="20" width="32" height="32" rx="8" fill="url(#cyan)"/>
+  <text x="24" y="41" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="900">S</text>
+  <text x="56" y="34" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="800">SARTTHI</text>
+  <text x="56" y="46" fill="#06b6d4" font-family="system-ui,sans-serif" font-size="8">CRM Platform</text>
+
+  <!-- Sidebar nav -->
+  <rect x="10" y="68" width="160" height="30" rx="6" fill="url(#cyan)" opacity="0.9"/>
+  <text x="28" y="88" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">🗃 Dashboard</text>
+  <text x="20" y="115" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Leads</text>
+  <text x="20" y="137" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Contacts</text>
+  <text x="20" y="159" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Accounts</text>
+  <text x="20" y="181" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Deals</text>
+  <text x="20" y="203" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Reports</text>
+  <text x="20" y="225" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Settings</text>
+
+  <!-- Header -->
+  <rect x="180" y="0" width="1020" height="52" fill="#1e293b" opacity="0.95"/>
+  <text x="200" y="30" fill="white" font-family="system-ui,sans-serif" font-size="13" font-weight="700">SALES PERFORMANCE DASHBOARD</text>
+  <text x="200" y="44" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Last 30 Days ▾ &nbsp; Q3 2024 ▾</text>
+  <!-- Search -->
+  <rect x="720" y="14" width="180" height="24" rx="12" fill="#334155"/>
+  <text x="738" y="30" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">🔍 Search</text>
+  <!-- Avatar -->
+  <circle cx="1150" cy="26" r="15" fill="url(#cyan)"/>
+  <text x="1145" y="31" fill="white" font-family="system-ui,sans-serif" font-size="10" font-weight="700">UA</text>
+  <text x="940" y="29" fill="white" font-family="system-ui,sans-serif" font-size="9">User A. ▾</text>
+  <text x="940" y="41" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Admin</text>
+
+  <!-- KPI Cards Row -->
+  <!-- Card 1: Total Revenue -->
+  <rect x="190" y="62" width="220" height="95" rx="10" fill="#1e293b"/>
+  <text x="206" y="83" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Total Revenue</text>
+  <text x="350" y="83" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">+18.4%</text>
+  <text x="206" y="115" fill="white" font-family="system-ui,sans-serif" font-size="24" font-weight="900">$489.2K</text>
+  <!-- Sparkline -->
+  <polyline points="206,145 225,138 244,140 263,132 282,128 301,130 320,125 339,122 358,118 377,115 396,112" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Card 2: New Leads -->
+  <rect x="420" y="62" width="220" height="95" rx="10" fill="#1e293b"/>
+  <text x="436" y="83" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9" font-weight="600">New Leads</text>
+  <text x="570" y="83" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">+12.1%</text>
+  <text x="436" y="115" fill="white" font-family="system-ui,sans-serif" font-size="24" font-weight="900">2,109</text>
+  <polyline points="436,145 455,142 474,138 493,135 512,132 531,129 550,127 569,124 588,122 607,120 626,118" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Card 3: Deals Won -->
+  <rect x="650" y="62" width="220" height="95" rx="10" fill="#1e293b"/>
+  <text x="666" y="83" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Deals Won</text>
+  <text x="800" y="83" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">+8.7%</text>
+  <text x="666" y="115" fill="white" font-family="system-ui,sans-serif" font-size="24" font-weight="900">145</text>
+  <polyline points="666,145 685,143 704,140 723,138 742,137 761,135 780,134 799,132 818,131 837,130 856,129" fill="none" stroke="#fbbf24" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Card 4: Pipeline Value -->
+  <rect x="880" y="62" width="300" height="95" rx="10" fill="#1e293b"/>
+  <text x="896" y="83" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Pipeline Value</text>
+  <text x="1100" y="83" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">+22.5%</text>
+  <text x="896" y="115" fill="white" font-family="system-ui,sans-serif" font-size="24" font-weight="900">$1.2M</text>
+  <polyline points="896,145 925,142 954,138 983,136 1012,133 1041,130 1070,127 1099,125 1128,122 1157,119 1170,116" fill="none" stroke="#06b6d4" stroke-width="1.5" stroke-linecap="round"/>
+
+  <!-- Revenue Overview Chart -->
+  <rect x="190" y="167" width="770" height="290" rx="10" fill="#1e293b"/>
+  <text x="206" y="191" fill="white" font-family="system-ui,sans-serif" font-size="12" font-weight="700">REVENUE OVERVIEW</text>
+  <rect x="1020" y="178" width="130" height="22" rx="5" fill="#334155"/>
+  <text x="1036" y="193" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="9">Aug 1 – Aug 30 ▾</text>
+  <!-- Y axis -->
+  <text x="196" y="225" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">$50</text>
+  <text x="196" y="275" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">$40</text>
+  <text x="196" y="325" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">$30</text>
+  <text x="196" y="375" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">$20</text>
+  <text x="196" y="425" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">$10</text>
+  <text x="199" y="445" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">$0</text>
+  <!-- Grid lines -->
+  <line x1="220" y1="220" x2="950" y2="220" stroke="#334155" stroke-width="0.5"/>
+  <line x1="220" y1="270" x2="950" y2="270" stroke="#334155" stroke-width="0.5"/>
+  <line x1="220" y1="320" x2="950" y2="320" stroke="#334155" stroke-width="0.5"/>
+  <line x1="220" y1="370" x2="950" y2="370" stroke="#334155" stroke-width="0.5"/>
+  <line x1="220" y1="420" x2="950" y2="420" stroke="#334155" stroke-width="0.5"/>
+  <line x1="220" y1="440" x2="950" y2="440" stroke="#334155" stroke-width="0.5"/>
+  <!-- Revenue line ascending -->
+  <path d="M240,430 C270,425 290,415 320,408 C350,400 370,385 410,365 C450,345 480,330 520,310 C560,290 590,275 640,255 C690,235 730,225 780,215 C830,205 880,225 920,220 C940,217 948,215 952,215" fill="none" stroke="url(#cyan)" stroke-width="2.5" stroke-linecap="round"/>
+  <path d="M240,430 C270,425 290,415 320,408 C350,400 370,385 410,365 C450,345 480,330 520,310 C560,290 590,275 640,255 C690,235 730,225 780,215 C830,205 880,225 920,220 C940,217 948,215 952,215 L952,440 L240,440 Z" fill="url(#chartArea)"/>
+  <!-- Data point + tooltip -->
+  <circle cx="640" cy="255" r="5" fill="white" stroke="#06b6d4" stroke-width="2"/>
+  <rect x="610" y="225" width="80" height="26" rx="5" fill="#0f172a"/>
+  <text x="620" y="237" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7">Revenue</text>
+  <text x="618" y="248" fill="#06b6d4" font-family="system-ui,sans-serif" font-size="8" font-weight="700">● Revenue: $45K</text>
+  <!-- Dashed line from tooltip to x-axis -->
+  <line x1="640" y1="260" x2="640" y2="440" stroke="#334155" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- X axis labels -->
+  <text x="236" y="455" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Aug 1</text>
+  <text x="316" y="455" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Aug 6</text>
+  <text x="396" y="455" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Aug 10</text>
+  <text x="516" y="455" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Aug 24</text>
+  <text x="636" y="455" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Aug 27</text>
+  <text x="876" y="455" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Aug 30</text>
+  <!-- X axis label -->
+  <text x="585" y="470" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Time</text>
+
+  <!-- Sales Activity Panel -->
+  <rect x="970" y="167" width="210" height="290" rx="10" fill="#1e293b"/>
+  <text x="986" y="191" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">SALES ACTIVITY</text>
+  <text x="1152" y="191" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">···</text>
+  <text x="986" y="207" fill="#64748b" font-family="system-ui,sans-serif" font-size="8" font-weight="600">Recent Wins</text>
+  <text x="1150" y="207" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">20m</text>
+  <!-- Win row -->
+  <circle cx="1000" cy="225" r="6" fill="#10b981"/>
+  <text x="1012" y="222" fill="white" font-family="system-ui,sans-serif" font-size="9" font-weight="600">Sarah K. | ABC Corp</text>
+  <text x="1012" y="234" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="8">$45K | Won</text>
+  <rect x="1012" y="238" width="26" height="12" rx="6" fill="#10b981"/>
+  <text x="1016" y="248" fill="white" font-family="system-ui,sans-serif" font-size="7">Won</text>
+  <rect x="1044" y="238" width="40" height="12" rx="6" fill="#0ea5e9"/>
+  <text x="1050" y="248" fill="white" font-family="system-ui,sans-serif" font-size="7">Sky Blue</text>
+  <!-- Tasks -->
+  <text x="986" y="265" fill="#64748b" font-family="system-ui,sans-serif" font-size="8" font-weight="600">Tasks</text>
+  <text x="1150" y="265" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">Now</text>
+  <rect x="990" y="272" width="8" height="8" rx="2" fill="none" stroke="#475569" stroke-width="1.5"/>
+  <text x="1002" y="280" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="8">Sarah K. | ABC Corp</text>
+  <text x="1002" y="292" fill="#64748b" font-family="system-ui,sans-serif" font-size="7.5">$45K | Sky Blue</text>
+  <rect x="990" y="300" width="8" height="8" rx="2" fill="none" stroke="#475569" stroke-width="1.5"/>
+  <text x="1002" y="308" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="8">Ben C.</text>
+  <text x="1002" y="320" fill="#64748b" font-family="system-ui,sans-serif" font-size="7.5">Fovtiew | ABC Corp</text>
+  <text x="1150" y="308" fill="#64748b" font-family="system-ui,sans-serif" font-size="7.5">3m</text>
+  <text x="986" y="352" fill="#3b82f6" font-family="system-ui,sans-serif" font-size="9">Stars ▾</text>
+
+  <!-- Deal Pipeline Stages -->
+  <rect x="190" y="467" width="770" height="273" rx="10" fill="#1e293b"/>
+  <text x="206" y="491" fill="white" font-family="system-ui,sans-serif" font-size="12" font-weight="700">DEAL PIPELINE STAGES</text>
+  <text x="926" y="491" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">···</text>
+  <!-- Legend -->
+  <rect x="820" y="505" width="70" height="14" rx="3" fill="#334155"/>
+  <text x="826" y="516" fill="#94a3b8" font-family="system-ui,sans-serif" font-size="7">▪ Closed Won — $1M</text>
+  <rect x="760" y="505" width="55" height="14" rx="3" fill="#334155"/>
+  <text x="766" y="516" fill="#fbbf24" font-family="system-ui,sans-serif" font-size="7">▪ Closed ≈ $1M</text>
+  <!-- Y axis -->
+  <text x="196" y="525" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">1,200</text>
+  <text x="196" y="565" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">800</text>
+  <text x="196" y="605" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">400</text>
+  <text x="204" y="655" fill="#64748b" font-family="system-ui,sans-serif" font-size="8">0</text>
+  <!-- Stacked bars -->
+  <rect x="245" y="530" width="80" height="120" rx="4" fill="#60a5fa"/>
+  <rect x="245" y="590" width="80" height="60" rx="4" fill="#fbbf24"/>
+  <rect x="370" y="510" width="80" height="140" rx="4" fill="#60a5fa"/>
+  <rect x="370" y="585" width="80" height="65" rx="4" fill="#fbbf24"/>
+  <rect x="495" y="540" width="80" height="110" rx="4" fill="#60a5fa"/>
+  <rect x="495" y="590" width="80" height="60" rx="4" fill="#fbbf24"/>
+  <rect x="620" y="520" width="80" height="130" rx="4" fill="#60a5fa"/>
+  <rect x="620" y="577" width="80" height="73" rx="4" fill="#fbbf24"/>
+  <rect x="745" y="545" width="80" height="105" rx="4" fill="#60a5fa"/>
+  <rect x="745" y="575" width="80" height="75" rx="4" fill="#fbbf24"/>
+  <!-- X axis labels -->
+  <text x="262" y="668" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Prospecting</text>
+  <text x="385" y="668" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Qualification</text>
+  <text x="516" y="668" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Proposal</text>
+  <text x="635" y="668" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Negotiation</text>
+  <text x="755" y="668" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">Closed Won</text>
+
+  <!-- Top Performers -->
+  <rect x="970" y="467" width="210" height="273" rx="10" fill="#1e293b"/>
+  <text x="986" y="491" fill="white" font-family="system-ui,sans-serif" font-size="11" font-weight="700">TOP PERFORMERS</text>
+  <text x="1152" y="491" fill="#64748b" font-family="system-ui,sans-serif" font-size="9">···</text>
+  <!-- Performer rows -->
+  <text x="986" y="514" fill="#64748b" font-family="system-ui,sans-serif" font-size="9" font-weight="700">1</text>
+  <circle cx="1010" cy="510" r="12" fill="#6366f1"/>
+  <text x="1006" y="514" fill="white" font-family="system-ui,sans-serif" font-size="9" font-weight="700">AR</text>
+  <text x="1030" y="508" fill="white" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Alex R.</text>
+  <text x="1130" y="508" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">–$110K</text>
+  <rect x="1030" y="514" width="100" height="6" rx="3" fill="#6366f1"/>
+
+  <text x="986" y="545" fill="#64748b" font-family="system-ui,sans-serif" font-size="9" font-weight="700">2</text>
+  <circle cx="1010" cy="541" r="12" fill="#f59e0b"/>
+  <text x="1006" y="545" fill="white" font-family="system-ui,sans-serif" font-size="9" font-weight="700">MV</text>
+  <text x="1030" y="539" fill="white" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Maria V.</text>
+  <text x="1130" y="539" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">–$95K</text>
+  <rect x="1030" y="545" width="82" height="6" rx="3" fill="#f59e0b"/>
+
+  <text x="986" y="576" fill="#64748b" font-family="system-ui,sans-serif" font-size="9" font-weight="700">3</text>
+  <circle cx="1010" cy="572" r="12" fill="#ef4444"/>
+  <text x="1006" y="576" fill="white" font-family="system-ui,sans-serif" font-size="9" font-weight="700">BC</text>
+  <text x="1030" y="570" fill="white" font-family="system-ui,sans-serif" font-size="10" font-weight="600">Ben C.</text>
+  <text x="1130" y="570" fill="#10b981" font-family="system-ui,sans-serif" font-size="9" font-weight="700">–$82K</text>
+  <rect x="1030" y="576" width="68" height="6" rx="3" fill="#ef4444"/>
+</svg>
